@@ -13,7 +13,7 @@ import it.bept7.spring_la_mia_pizzeria_crud.repository.PizzaRepository;
 
 
 @Controller
-@RequestMapping("/pizze")
+@RequestMapping
 public class PizzaController {
 
     @Autowired
@@ -23,8 +23,10 @@ public class PizzaController {
     public String index (Model model) {
         List<Pizza> result = repository.findAll();
         model.addAttribute("list", result);
+        model.addAttribute("img", "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Pizza_%2847092865554%29.jpg/960px-Pizza_%2847092865554%29.jpg");
 
-        return "/pizze/index";
+        return "pizze/index";
     }
+    
 
 }

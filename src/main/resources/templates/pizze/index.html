@@ -1,11 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/src/main/resources/static/application.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <title>Pizze</title>
 </head>
+
 <body>
-    
+
+    <div class="container">
+        <nav th:replace="fragments :: navbar(${pizze})"></nav>
+    </div>
+
+    <div class="container d-flex t-center justify-content-center mb-5">
+        <h1>Le nostre Pizze</h1>
+    </div>
+    <div class="container d-flex">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Foto</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Ingredienti</th>
+                    <th scope="col">Prezzo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="item : ${list}">
+                    <td th:src=" ${item.foto}" alt="pizza"></td>
+                    <td th:text="${item.nome}"></td>
+                    <td th:text="${item.descrizione}"></td>
+                    <td th:text="${item.prezzo}"></td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
